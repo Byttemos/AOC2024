@@ -1,4 +1,4 @@
-
+input_path = './input_day_1.txt'
 
 def readInput(path):
     '''Take path of txt file and return array of number pairs'''
@@ -20,7 +20,20 @@ def sortData(raw_data):
     def splitPairs(input_data):
         '''take list of number pairs and split them into two lists for easier sorting'''
         for pair in input_data:
-            left_list.append(pair[0])
-            right_list.append(pair[1])
+            left_list.append(int(pair[0]))
+            right_list.append(int(pair[1]))
 
-sortData('./input_day_1.txt')
+    splitPairs(input_data)
+    list_catalog[0].sort()
+    list_catalog[1].sort()
+    return list_catalog
+
+def calculateDist(sorted_data = sortData(input_path)):
+    '''Take sorted dataset and calculate difference between each element'''
+    total_dist = 0
+    for i in sorted_data:
+        total_dist += abs(sorted_data[0][i]-sorted_data[1][i])
+    print(total_dist)
+
+calculateDist()
+
