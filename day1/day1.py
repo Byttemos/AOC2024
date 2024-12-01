@@ -22,7 +22,7 @@ def sortData(raw_data):
         for pair in input_data:
             left_list.append(int(pair[0]))
             right_list.append(int(pair[1]))
-
+        assert len(list_catalog[0]) == len(list_catalog[1]), 'Lists are of unequal length!'
     splitPairs(input_data)
     list_catalog[0].sort()
     list_catalog[1].sort()
@@ -31,10 +31,9 @@ def sortData(raw_data):
 def calculateDist(sorted_data = sortData(input_path)):
     '''Take sorted dataset and calculate difference between each element. Return integer of total difference across all pairs'''
     total_dist = 0
-    for i in range(len(sorted_data)+1):
+    for i in range(len(sorted_data[0])):
         total_dist += abs(sorted_data[0][i]-sorted_data[1][i])
-    
     return total_dist
 
-print(calculateDist())
+print(f'The summarized difference between all ID pairs are {calculateDist()}')
 
