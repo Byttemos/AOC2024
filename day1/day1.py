@@ -29,11 +29,12 @@ def sortData(raw_data):
     return list_catalog
 
 def calculateDist(sorted_data = sortData(input_path)):
-    '''Take sorted dataset and calculate difference between each element'''
+    '''Take sorted dataset and calculate difference between each element. Return integer of total difference across all pairs'''
     total_dist = 0
-    for i in sorted_data:
+    for i in range(len(sorted_data)+1):
         total_dist += abs(sorted_data[0][i]-sorted_data[1][i])
-    print(total_dist)
+    
+    return total_dist
 
-calculateDist()
+print(calculateDist())
 
