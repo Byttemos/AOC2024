@@ -35,5 +35,14 @@ def calculateDist(sorted_data = sortData(input_path)):
         total_dist += abs(sorted_data[0][i]-sorted_data[1][i])
     return total_dist
 
-print(f'The summarized difference between all ID pairs are {calculateDist()}')
+
+
+def getSimilarityScore(sorted_data = sortData(input_path)):
+    '''Take sorted dataset and multiply each instance in left list with how many times it occurs on the other list'''
+    similarity_score = 0
+    for i in sorted_data[0]:
+        similarity_score += i * sorted_data[1].count(i)
+
+    return similarity_score
+print(getSimilarityScore())
 
