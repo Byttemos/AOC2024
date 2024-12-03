@@ -26,7 +26,7 @@ def hasDuplicates(report):
 
 def isMonotonic(report):
     '''takes a report and evaluates whether the sequence is monotonic. returns Boolean value'''
-    subject = [int(i) for i in report]
+    subject = [i for i in report]
     asc = sorted(subject)
     desc = sorted(subject, reverse=True)
     if subject == asc or subject == desc:
@@ -36,7 +36,7 @@ def isMonotonic(report):
 
 def getSuccessiveDiff(report):
     '''evaluates the difference of successive elements in report, and returns the maximum difference'''
-    report = [int(x) for x in report]
+    report = [x for x in report]
     max_diff = 0
     for i in range(len(report)-1):
         current_diff = abs(report[i+1] - report[i])
@@ -46,8 +46,10 @@ def getSuccessiveDiff(report):
 
 def removeNumsSafe(report):
     report = [int(x) for x in report]
-    for digit in report:
-        temp_report = [x for x in report if x != digit]
+    # for digit in report:
+    #     temp_report = [x for x in report if x != digit]
+    for i in range(len(report)):
+        temp_report = [report[:i] + report[i+1:]]
         if getSuccessiveDiff(temp_report) < 4 and isMonotonic(temp_report) == True and hasDuplicates(temp_report) == False:
             return True
 
