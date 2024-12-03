@@ -43,35 +43,25 @@ def getSuccessiveDiff(report):
         if current_diff > max_diff:
             max_diff = current_diff
     return max_diff
-        
 
+def removeNumsSafe(report):
+    report = [int(x) for x in report]
+    for digit in report:
+        temp_report = [x for x in report if x != digit]
+        print (temp_report)
+        if getSuccessiveDiff(temp_report) < 4 and isMonotonic(temp_report) == True and hasDuplicates(temp_report) == False:
+            return True
+        else:
+            return False
 
-# def getReportSafety(reports):
-#     '''Take list of reports and return a safety score of how many reports are considered safe'''
-#     safety_score = 0
-#     for report in reports:
-#         for digit in report:
-#             if digit == report[digit+1]: #if next element is same
-#                 break #not safe
-#             elif digit < report[digit+1]: #if next element is larger
-#                 if digit < report[digit-1]: #THEN if previous element is also larger
-#                     break #not safe
-#             elif digit > report[digit+1]: #if next element is smaller
-#                 if digit > report[digit-1]: #THEN if previous element is also smaller
-#                     break #not safe
-#             else:
-#                 safety_score += 1
-#     return safety_score
 
 def getSafeReports(reports):
     safe_reports = 0
     for report in reports:
         if isMonotonic(report) == True and hasDuplicates(report) == False and getSuccessiveDiff(report) < 4: 
             safe_reports += 1
+        elif removeNumsSafe(report) == True:
+            safe_reports += 1
     return safe_reports
 
 print(getSafeReports(readInput(input_path)))
-
-
- # print(getReportSafety(readInput(input_path)))
-
