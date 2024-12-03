@@ -1,4 +1,4 @@
-input_path = './sample_input_day2.txt'
+input_path = './input_day2.txt'
 
 def readInput(path):
     '''read input from txt file and return 2d array of reports'''
@@ -16,7 +16,7 @@ def readInput(path):
 def hasDuplicates(report):
     '''Takes single report and returns True if it contains duplicates, False if it doesnt'''
     digit_cache = []
-    for digit in str(report):
+    for digit in report:
         if digit in digit_cache:
             return True
             break
@@ -26,7 +26,7 @@ def hasDuplicates(report):
 
 def isMonotonic(report):
     '''takes a report and evaluates whether the sequence is monotonic. returns Boolean value'''
-    subject = [int(i) for i in str(report)]
+    subject = [int(i) for i in report]
     asc = sorted(subject)
     desc = sorted(subject, reverse=True)
     if subject == asc or subject == desc:
@@ -36,6 +36,7 @@ def isMonotonic(report):
 
 def getSuccessiveDiff(report):
     '''evaluates the difference of successive elements in report, and returns the maximum difference'''
+    report = [int(x) for x in report]
     max_diff = 0
     for i in range(len(report)-1):
         current_diff = abs(report[i+1] - report[i])
@@ -62,10 +63,15 @@ def getReportSafety(reports):
                 safety_score += 1
     return safety_score
 
+def getSafeReports(reports):
+    safe_reports = 0
+    for report in reports:
+        if isMonotonic(report) == True and hasDuplicates(report) == False and getSuccessiveDiff(report) < 4: 
+            safe_reports += 1
+    return safe_reports
+
+print(getSafeReports(readInput(input_path)))
 
 
+ # print(getReportSafety(readInput(input_path)))
 
-
-# print(getReportSafety(readInput(input_path)))
-for report in readInput(input_path):
-    hasDuplicates(report)
