@@ -45,11 +45,11 @@ def getSuccessiveDiff(report):
     return max_diff
 
 def removeNumsSafe(report):
-    report = [int(x) for x in report]
+    report = [x for x in report]
     # for digit in report:
     #     temp_report = [x for x in report if x != digit]
     for i in range(len(report)):
-        temp_report = [report[:i] + report[i+1:]]
+        temp_report = report[:i] + report[i+1:]
         if getSuccessiveDiff(temp_report) < 4 and isMonotonic(temp_report) == True and hasDuplicates(temp_report) == False:
             return True
 
