@@ -46,22 +46,22 @@ def getSuccessiveDiff(report):
         
 
 
-def getReportSafety(reports):
-    '''Take list of reports and return a safety score of how many reports are considered safe'''
-    safety_score = 0
-    for report in reports:
-        for digit in report:
-            if digit == report[digit+1]: #if next element is same
-                break #not safe
-            elif digit < report[digit+1]: #if next element is larger
-                if digit < report[digit-1]: #THEN if previous element is also larger
-                    break #not safe
-            elif digit > report[digit+1]: #if next element is smaller
-                if digit > report[digit-1]: #THEN if previous element is also smaller
-                    break #not safe
-            else:
-                safety_score += 1
-    return safety_score
+# def getReportSafety(reports):
+#     '''Take list of reports and return a safety score of how many reports are considered safe'''
+#     safety_score = 0
+#     for report in reports:
+#         for digit in report:
+#             if digit == report[digit+1]: #if next element is same
+#                 break #not safe
+#             elif digit < report[digit+1]: #if next element is larger
+#                 if digit < report[digit-1]: #THEN if previous element is also larger
+#                     break #not safe
+#             elif digit > report[digit+1]: #if next element is smaller
+#                 if digit > report[digit-1]: #THEN if previous element is also smaller
+#                     break #not safe
+#             else:
+#                 safety_score += 1
+#     return safety_score
 
 def getSafeReports(reports):
     safe_reports = 0
