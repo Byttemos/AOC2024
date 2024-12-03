@@ -48,11 +48,10 @@ def removeNumsSafe(report):
     report = [int(x) for x in report]
     for digit in report:
         temp_report = [x for x in report if x != digit]
-        print (temp_report)
         if getSuccessiveDiff(temp_report) < 4 and isMonotonic(temp_report) == True and hasDuplicates(temp_report) == False:
             return True
-        else:
-            return False
+
+    return False
 
 
 def getSafeReports(reports):
