@@ -9,7 +9,7 @@ def readInput(path):
 def cleanMemory(memory_string):
     '''iterate through string and remove slices between dont() and do() expressions. return new, clean string'''
     do_pattern = r'do\(\)'
-    dont_pattern = r'don\'t\(\)'
+    dont_pattern = r'don\'n\(\)'
     do_indices = [match.start() for match in re.finditer(do_pattern, memory_string)]
     dont_indices = [match.start() for match in re.finditer(dont_pattern, memory_string)]
     index_pairs = []
