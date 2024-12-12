@@ -14,16 +14,32 @@ def readInput(data_path):
 
 def findX(data_array):
     '''Take data array and return and call findMAS on all positions of X'''
-    # print(f'received input: {data_array}')
-    def findMAS(i, j):
+    def findM(i, j):
         '''take matrix indexed position of X and look for remaining letters in all directions'''
-        print(data_array[i][j])
+        def checkDirection(dir):
+            print(dir)
+
+        if data_array[i-1][j] == 'M':
+            print('M found due N')
+        if data_array[i][j-1] == 'M':
+            print('M found due W')
+        if data_array[i-1][j-1] == 'M':
+            print('M found NW')
+        if data_array[i+1][j] == 'M':
+            print('M found due S')
+        if data_array[i][j+1] == 'M':
+            print('M found due E')
+        if data_array[i+1][j+1] == 'M':
+            print('M found SE')
+        if data_array[i+1][j-1] == 'M':
+            print('M found SW')
+        if data_array[i-1][j+1] == 'M':
+            print('M found NE')
+
     for i in range(data_array.shape[0]):
-        # print(f'Checking row: {i}')
         for j in range(data_array.shape[1]):
-            # print(f'Checking column: {j}')
             if data_array[i][j] == 'X':
-                findMAS(i, j)
+                findM(i, j)
 
 
 findX(readInput(sample_path))
